@@ -1,6 +1,6 @@
 <div align="center">
     <h1> YAPG </h1>
-    <h5><b>Y</b>et <b>A</b>nother <b>P</b>assword <b><G/b>enerator</h5>
+    <h5>Yet Another Password Generator</h5>
     <h6><i>A password generator that barely (no one) will use</i></h6>
 </div>
 
