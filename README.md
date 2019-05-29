@@ -1,7 +1,7 @@
 <div align="center">
     <h1> YAPG </h1>
     <h5>Yet Another Password Generator</h5>
-    <h6><i>A password generator that barely (no one) will use</i></h6>
+    <h6><i>A password generator that barely anyone (no one) will use</i></h6>
 </div>
 
 ## Made by
@@ -9,7 +9,7 @@
 * Sebastian Alejandro
 
 ## Our Idea:
-Create a password generator that can make simple and complex passwords
+Create a password generator that can make simple (`powdery-exponent-underhand`) and complex (`@nD6V&c#*@JJ7%`) passwords
 
 ## Goals:
 - [ ] Get user input to ask how many characters in their password, what type of password, and the number of passwords.
