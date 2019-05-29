@@ -1,6 +1,8 @@
 # Password Generator
 LHS Java Final 2019
 
+<h6><i>a password generator that barely (no one) will use</i></h6>
+
 ## Made by
 * Borjan Palankov
 * Sebastian Alejandro
