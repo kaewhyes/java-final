@@ -58,15 +58,19 @@ public class Password {
         /*
          * This will generate a complex password, such as "S3AZ$C@Y7z$&!x"
          */
-        String finalpasswd = "";
+        int a = 0;
+        int b = 0;
+         String finalpasswd = "";
         // using CHAR_LOWER, gen a random num (0 or 1), and either keep it as it is, or use .toUpperCase()
         final String[] CHARS = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q","r", "s", "t", "u", "v", "w", "x", "y", "z" };
-        final String[] SPECIAL_CHARS = { "!", "@", "#", "$", "%", "^", "&", ",", "(", ")", "_", "-", ",", "." };
         final String[] NUMBERS = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" };
-
+        a = (0+(int)(Math.random()* CHARS.length));
+        b = (0+(int)(Math.random()* NUMBERS.length));
         Random rand = new Random();
-
-        return finalpasswd;
+        for (int i = 0; i < 3; i++) {
+            String finalpasswd = (CHARS [a] + NUMBERS [b]);
+        }
+        return finalpsswd;
     }
 
     private static String genSimple() {
