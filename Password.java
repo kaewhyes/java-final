@@ -60,7 +60,7 @@ public class Password {
          */
         String finalpasswd = "";
         // using CHAR_LOWER, gen a random num (0 or 1), and either keep it as it is, or use .toUpperCase()
-        final String[] CHARS = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q","r", "s", "t", "u", "v", "w", "x", "y" "z" };
+        final String[] CHARS = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q","r", "s", "t", "u", "v", "w", "x", "y", "z" };
         final String[] SPECIAL_CHARS = { "!", "@", "#", "$", "%", "^", "&", ",", "(", ")", "_", "-", ",", "." };
         final String[] NUMBERS = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" };
 
