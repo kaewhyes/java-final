@@ -28,7 +28,7 @@ public class Password {
 
         System.out.printf("Hello, and Welcome to: \n\n");
 
-        System.out.println(" #     #    #    ######   ##### "); /* Please appreciate this, it took me like 30 mins */
+        System.out.println(" #     #    #    ######   ##### "); // Please appreciate this, it took me like 30 mins
         System.out.println("  #   #    # #   #     # #     #"); 
         System.out.println("   # #    #   #  #     # #      ");
         System.out.println("    #    #     # ######  #  ####");
@@ -39,17 +39,20 @@ public class Password {
         System.out.println("\nWould you like a complex or simple  password?");
         System.out.println("Please type \"complex\" for a complex password, or \"simple\" for a simple password, or press \"Q\" to quit.");
 
-        while (running) { /* will constantly run until the user exits */
+        while (running) { // will constantly run until the user exits
+
             if (in.hasNext()) {
                 selection = in.next();
                 if (selection.equalsIgnoreCase("complex")) { 
                     System.out.println("Complex password selected.");
-                    System.out.println("Your password is ");
+                    System.out.print("Your password is \n");
                     genComplex();
+                    System.out.println();
                 } else if (selection.equalsIgnoreCase("simple")) {
                     System.out.println("Simple password selected");
-                    System.out.print("Your password is ");
+                    System.out.print("Your password is \n");
                     genSimple();
+                    System.out.println();
                 } else if (selection.equalsIgnoreCase("q")) {
                     System.out.println("Exiting YAPG.");
                     running = false;
@@ -65,49 +68,49 @@ public class Password {
      *
      * @return Final complex password
      */
-    private static String genComplex() {
+    private static void genComplex() {
         /*
          * This will generate a complex password, such as "S3AZ$C@Y7z$&!x"
          */
 
         Random rand = new Random();
 
-        int a = 0;
-        int b = 0;
-        int c = 0;
-        int charSelector;
-        int upperOrLower;
-
-        String finalComplexPassword = "";
-        charSelector = rand.nextInt(4);
-        upporOrLower = rand.nextInt(2);
-        /* using CHAR, gen a random num (0 or 1), and either keep it as it is, or use .toUpperCase() */
-        final String[] CHARS = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q","r", "s", "t", "u", "v", "w", "x", "y", "z" }; /* 0 -> 25 */
-        final String[] NUMBERS = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" }; /* 0 -> 9 */
-        final String[] SPECIAL_CHARS = {"!","@","#","$","%","^","&","*","(",")","_","-","+"}; /* 0 -> 12 */
-
-
-        if (charSelector == 1)  { /* CHARS */
-            if (upperOrLower == 0) {
-                
-            }
-        } else if (charSelector == 2) { /* NUMBERS */
+        StringBuilder finalComplexPassword = new StringBuilder();
         
-        } else if (charSelector == 3) { /* SPECIAL_CHARS */
+        int charSelector;
+        int numSelector; // array num for NUMBERS
+        int specialSelector; // array num for SPECIAL_CHARS
+        int upperOrLower; // Uppercase, or Lowercase? 
+        int alphabetSelector; // array num for CHARS_UPPER/LOWER
+
+        final String[] CHARS_UPPER = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X","Y" ,"Z"}; // 0 -> 25
+        final String[] CHARS_LOWER = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q","r", "s", "t", "u", "v", "w", "x", "y", "z"}; // 0 -> 25 
+        final String[] NUMBERS = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0","1", "2", "3", "4", "5", "6", "7", "8", "9", "0" }; // 0 -> 19
+        final String[] SPECIAL_CHARS = {"!", "@" ,"#" ,"$" ,"%" ,"^" ,"&" ,"*" ,"(" ,")" ,"_" ,"-" ,"+", "!", "@" ,"#" ,"$" ,"%" ,"^" ,"&" ,"*" ,"(" ,")" ,"_" ,"-" ,"+"}; // 0 -> 25
+
+        // NUMBERS and SPECIAL_CHARS are repeated in order to give a greater chance 
+
+        for (int i = 0; i < 12; i++) {
+            charSelector = 1 + rand.nextInt(3);
+            numSelector  = rand.nextInt(20);
+            specialSelector = rand.nextInt(26);
+            upperOrLower = rand.nextInt(2); // Lower = 0, Upper = 1 
+            alphabetSelector = rand.nextInt(26); // A -> Z
+            if (charSelector == 1) { // CHAR
+                if (upperOrLower == 0) {
+                    finalComplexPassword.append(CHARS_LOWER[alphabetSelector]);
+                } else {
+                    finalComplexPassword.append(CHARS_UPPER[alphabetSelector]);
+                }
+            } else if (charSelector == 2) {
+                finalComplexPassword.append(NUMBERS[numSelector]);
+            } else if (charSelector == 3) {
+                finalComplexPassword.append(SPECIAL_CHARS[specialSelector]);
+            }
             
         }
-
-
-        /*         for (int i = 0; i < 3; i++) {
-            a = (0+(int)(Math.random()* CHARS.length));
-            b = (0+(int)(Math.random()* NUMBERS.length));
-            c = (0+(int)(Math.random()* SPECIAL_CHARS.length));
-    
-        } */
         
-        finalComplexPasword = (CHARS [a] + NUMBERS [b] + SPECIAL_CHARS [c]);
-        
-        return finalComplexPassword;
+        System.out.print(finalComplexPassword);
     }
 
     /**
@@ -122,14 +125,14 @@ public class Password {
          */
 
         String finalSimplePassword = " ";
-        String separator;
+        String separator = " ";
 
         ArrayList<String> dict = readDict();
 
-        if (dict == null) { /* when dict is null, program exits */
+        if (dict == null) { // when dict is null, program exits
             System.err.print("Could not find wordlist, exiting.");
             System.exit(0);
-        }
+        } 
 
         return finalSimplePassword;
     }
@@ -144,11 +147,15 @@ public class Password {
         /*
          * What is an ArrayList and how is it different than a normal array?
          * 
-         * An ArrayList is a mutable array, found in the java.util 
+         * An ArrayList is a mutable array, found in the java.util package. The user can read and write to the array.
+         * 
+         * A local array is a immutable array, where the user can only read the array.
          */
+
         ArrayList<String> dict = new ArrayList();
-        /* If the file "wordlist.txt" could not be found, it will return null, or the actual array if the file can be found */
-        /* Should it fail, it will let the user know, and fail. */
+        /* 
+         * If the file "wordlist.txt" could not be found, it will return null, or the actual array if the file can be found. Should it fail, it will let the user know, and fail. 
+         */
         
         /* 
          * What is try and catch?
@@ -157,8 +164,9 @@ public class Password {
          * catch: The catch statement allows you to define a block of code to be executed, if an error occurs in the try block.
          * 
          */
+
         try {
-            Scanner reader = new Scanner(new File("wordlist.txt"));  /* Did you know: Scanner is able to scan files using File I/O! */
+            Scanner reader = new Scanner(new File("wordlist.txt"));  // Did you know: Scanner is able to scan files using File I/O!
 
             while (reader.hasNext()) {
                 dict.add(reader.nextLine());

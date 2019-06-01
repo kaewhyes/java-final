@@ -21,8 +21,8 @@ Create a password generator that can make simple (`powdery-exponent-underhand`) 
   - [ ] Number of passwords? (default 1)
 - [ ] Generate Simple passwords
   - [ ] Use an array with random words, and select them using a random number
-  - [x] Create a word list somehow (done with Scanner)
+    - [x] Create a word list somehow (done with Scanner)
   - [ ] Ask if the user wants spaces or dashes as a separator (default spaces)
-- [ ] Generate complex passwords
-  - [ ] Use arrays to choose randomly from `CHARS`,`SPECIAL_CHARS` and `NUMBERS`.
-    - [ ] Concatonate these random characters together to make a password.
+- [x] Generate complex passwords
+  - [x] Use arrays to choose randomly from `CHARS`,`SPECIAL_CHARS` and `NUMBERS`.
+    - [x] Concatonate these random characters together to make a password.
