@@ -75,9 +75,16 @@ public class Password {
 
         Random rand = new Random();
 
+        /*
+         * What is StringBuilder?
+         * 
+         * Basic Strings are always immutable, meaning they cannot change. 
+         * A StringBuilder is fully mutable, allowing a programmer to append things to a String.
+         * 
+         */
         StringBuilder finalComplexPassword = new StringBuilder();
         
-        int charSelector;
+        int charSelector; // where are we pulling from
         int numSelector; // array num for NUMBERS
         int specialSelector; // array num for SPECIAL_CHARS
         int upperOrLower; // Uppercase, or Lowercase? 
