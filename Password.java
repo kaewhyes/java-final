@@ -125,14 +125,15 @@ public class Password {
      *
      * @return Final simple password
      */
-    private static String genSimple() {
+    private static void genSimple() {
         /*
          * This will generate a simple pasword, such as "emperor blaming broadband" or
          * "reusable-hurled-eggbeater"
          */
 
-        String finalSimplePassword = " ";
+        StringBuilder finalSimplePassword = new StringBuilder();
         String separator = " ";
+        int dictSize;
 
         ArrayList<String> dict = readDict();
 
@@ -141,7 +142,12 @@ public class Password {
             System.exit(0);
         } 
 
-        return finalSimplePassword;
+        dictSize = dict.size(); // find size of 
+
+        for (int i = 0; i < 4; i++) {
+            if ()
+        }
+        System.out.println(finalSimplePassword);
     }
 
     /**
