@@ -145,7 +145,9 @@ public class Password {
         dictSize = dict.size(); // find size of 
 
         for (int i = 0; i < 4; i++) {
-            if ()
+            if (dict == ) {
+
+            }
         }
         System.out.println(finalSimplePassword);
     }

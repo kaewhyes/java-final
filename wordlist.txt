@@ -34907,7 +34907,6 @@ culpably
 culpae
 culprit
 culprits
-cult
 cultch
 cultches
 culti
@@ -80960,8 +80959,6 @@ kiester
 kiesters
 kif
 kifs
-kike
-kikes
 kilderkin
 kilderkins
 kilim
@@ -81713,8 +81710,6 @@ kraken
 krakens
 krater
 kraters
-kraut
-krauts
 kreep
 kreeps
 kremlin
@@ -90941,14 +90936,12 @@ miche
 miched
 miches
 miching
-mick
 mickey
 mickeys
 mickle
 mickler
 mickles
 micklest
-micks
 micra
 micrified
 micrifies
@@ -95443,9 +95436,7 @@ mukluk
 mukluks
 muktuk
 muktuks
-mulatto
 mulattoes
-mulattos
 mulberries
 mulberry
 mulch
@@ -106901,7 +106892,6 @@ paddock
 paddocked
 paddocking
 paddocks
-paddy
 padi
 padis
 padishah
@@ -112271,8 +112261,6 @@ pickabacking
 pickabacks
 pickadil
 pickadils
-pickaninnies
-pickaninny
 pickaroon
 pickaroons
 pickax
@@ -138623,10 +138611,8 @@ shyer
 shyers
 shyest
 shying
-shylock
 shylocked
 shylocking
-shylocks
 shyly
 shyness
 shynesses
@@ -171045,8 +171031,6 @@ woozily
 wooziness
 woozinesses
 woozy
-wop
-wops
 word
 wordage
 wordages
@@ -171985,8 +171969,6 @@ yeuks
 yeuky
 yew
 yews
-yid
-yids
 yield
 yielded
 yielder
