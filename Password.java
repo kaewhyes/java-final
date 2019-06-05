@@ -40,7 +40,6 @@ public class Password {
         System.out.println("Please type \"complex\" for a complex password, or \"simple\" for a simple password, or press \"Q\" to quit.");
 
         while (running) { // will constantly run until the user exits
-
             if (in.hasNext()) {
                 selection = in.next();
                 if (selection.equalsIgnoreCase("complex")) { 
@@ -72,9 +71,7 @@ public class Password {
         /*
          * This will generate a complex password, such as "S3AZ$C@Y7z$&!x"
          */
-
-        Random rand = new Random();
-
+        
         /*
          * What is StringBuilder?
          * 
@@ -83,7 +80,8 @@ public class Password {
          * 
          */
         StringBuilder finalComplexPassword = new StringBuilder();
-        
+        Random rand = new Random();
+
         int charSelector; // where are we pulling from
         int numSelector; // array num for NUMBERS
         int specialSelector; // array num for SPECIAL_CHARS
@@ -133,23 +131,76 @@ public class Password {
 
         StringBuilder finalSimplePassword = new StringBuilder();
         String separator = " ";
+        boolean running = true;
         int dictSize;
+        int wordNum;
+        String selection;
+        int numOfWords;
 
+        Random rand = new Random();
+        Scanner foot = new Scanner(System.in);
         ArrayList<String> dict = readDict();
 
         if (dict == null) { // when dict is null, program exits
             System.err.print("Could not find wordlist, exiting.");
             System.exit(0);
-        } 
-
-        dictSize = dict.size(); // find size of 
-
-        for (int i = 0; i < 4; i++) {
-            if (dict == ) {
-
-            }
         }
-        System.out.println(finalSimplePassword);
+
+        dictSize = dict.size(); // find size of dict
+
+        System.out.println("Would you like a separated password, or all together. Please enter \"separated\" for separated, or \"together\" for all together. Pressing \"Q\" will default to 3 words and separated.")
+
+        /*
+         * I call this move, loop hell. Please help us.
+         * We have a while loop, nested in an if loop, nested in an if loop, nested in an if loop, nested in a while loop. This is an example of great development technique.
+         */
+        
+        while(running) {
+
+            if (foot.hasNext()) {
+
+                selection = in.next();
+
+                if (selection.equalsIgnoreCase("separated")) {
+                    System.out.println("How many words? Lower limit is \"2\" and upper limit is \"5\"")
+                    if (foot.hasNextInt()) {
+                        numOfWords = in.nextInt();
+                        if  (numOfWords <= 2 || numOfWords >= 5 ) {
+                            System.out.println("Too few or too many words. Please enter a number between 2 and 5.")
+                        } else {
+                            for (int i = 0; i < numofWords; i++) {
+                                wordNum = rand.nextInt(dictSize);
+                                finalSimplePassword.append(dict.get(wordNum) + separator);
+                            }
+                            System.out.println(finalSimplePassword);
+                        }
+                    } else {
+                        System.out.println("Please enter a valid response.")
+                    }
+                } else if (selection.equalsIgnoreCase("together")) {
+                    System.out.println("How many words? Lower limit is \"2\" and upper limit is \"5\"")
+                    if (foot.hasNextInt()) {
+                        numOfWords = in.nextInt();
+                        if  (numOfWords <= 2 || numOfWords >= 5 ) {
+                            System.out.println("Too few or too many words. Please enter a number between 2 and 5.")
+                        } else {
+                            for (int i = 0; i < numofWords; i++) {
+                                wordNum = rand.nextInt(dictSize);
+                                finalSimplePassword.append(dict.get(wordNum);
+                            }
+                            System.out.println(finalSimplePassword);
+                        }
+                    }
+                } else if (selection.equalsIgnoreCase("q")) {
+                    for (int i = 0; i < 3; i++) {
+                        wordNum = rand.nextInt(dictSize);
+                        finalSimplePassword.append(dict.get(wordNum) + separator);
+                    }
+                } else {
+                    System.out.println("Please enter a valid response.")
+                }
+            }   
+        }
     }
 
     /**
