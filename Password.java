@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
+import sun.nio.ch.sctp.SctpNet;
+
 public class Password {
     /**
      * Main method for generating password
@@ -20,7 +22,7 @@ public class Password {
      * @return simple or complex password
      */
     public static void main(String[] args) {
-        
+
         String selection = "";
         boolean running = true;
 
@@ -49,7 +51,6 @@ public class Password {
                     System.out.println();
                 } else if (selection.equalsIgnoreCase("simple")) {
                     System.out.println("Simple password selected");
-                    System.out.print("Your password is \n");
                     genSimple();
                     System.out.println();
                 } else if (selection.equalsIgnoreCase("q")) {
@@ -71,7 +72,7 @@ public class Password {
         /*
          * This will generate a complex password, such as "S3AZ$C@Y7z$&!x"
          */
-        
+
         /*
          * What is StringBuilder?
          * 
@@ -81,7 +82,9 @@ public class Password {
          */
         StringBuilder finalComplexPassword = new StringBuilder();
         Random rand = new Random();
+        Scanner in = new Scanner(System.in);
 
+        boolean running = true;
         int charSelector; // where are we pulling from
         int numSelector; // array num for NUMBERS
         int specialSelector; // array num for SPECIAL_CHARS
@@ -94,8 +97,15 @@ public class Password {
         final String[] SPECIAL_CHARS = {"!", "@" ,"#" ,"$" ,"%" ,"^" ,"&" ,"*" ,"(" ,")" ,"_" ,"-" ,"+", "!", "@" ,"#" ,"$" ,"%" ,"^" ,"&" ,"*" ,"(" ,")" ,"_" ,"-" ,"+"}; // 0 -> 25
 
         // NUMBERS and SPECIAL_CHARS are repeated in order to give a greater chance 
+        
+        while (running) {
+            System.out.println("");
+            if (in.hasNext()) {
+                System.out.println("fuck");
+            }
+        }
 
-        for (int i = 0; i < 12; i++) {
+/*         for (int i = 0; i < 12; i++) {
             charSelector = 1 + rand.nextInt(3);
             numSelector  = rand.nextInt(20);
             specialSelector = rand.nextInt(26);
@@ -112,9 +122,9 @@ public class Password {
             } else if (charSelector == 3) {
                 finalComplexPassword.append(SPECIAL_CHARS[specialSelector]);
             }
-            
-        }
-        
+
+        } */
+
         System.out.print(finalComplexPassword);
     }
 
@@ -132,10 +142,11 @@ public class Password {
         StringBuilder finalSimplePassword = new StringBuilder();
         String separator = " ";
         boolean running = true;
+        boolean running2 = true;
         int dictSize;
         int wordNum;
         String selection;
-        int numOfWords;
+        int numOfWords = 0;
 
         Random rand = new Random();
         Scanner foot = new Scanner(System.in);
@@ -148,47 +159,69 @@ public class Password {
 
         dictSize = dict.size(); // find size of dict
 
-        System.out.println("Would you like a separated password, or all together. Please enter \"separated\" for separated, or \"together\" for all together. Pressing \"Q\" will default to 3 words and separated.")
+        System.out.println("Would you like a separated password, or all together.");
+        System.out.println("Please enter \"separated\" for separated, or \"together\" for all together.");
+        System.out.println("Pressing \"Q\" will default to 3 words and separated.");
 
         /*
          * I call this move, loop hell. Please help us.
-         * We have a while loop, nested in an if loop, nested in an if loop, nested in an if loop, nested in a while loop. This is an example of great development technique.
          */
-        
+
         while(running) {
-
             if (foot.hasNext()) {
-
-                selection = in.next();
-
+                selection = foot.next();
                 if (selection.equalsIgnoreCase("separated")) {
-                    System.out.println("How many words? Lower limit is \"2\" and upper limit is \"5\"")
-                    if (foot.hasNextInt()) {
-                        numOfWords = in.nextInt();
-                        if  (numOfWords <= 2 || numOfWords >= 5 ) {
-                            System.out.println("Too few or too many words. Please enter a number between 2 and 5.")
-                        } else {
-                            for (int i = 0; i < numofWords; i++) {
-                                wordNum = rand.nextInt(dictSize);
-                                finalSimplePassword.append(dict.get(wordNum) + separator);
+                    System.out.println("How many words? Lower limit is \"2\" and upper limit is \"5\"");
+                    while (running2) {
+                        if (foot.hasNext()) {
+                            String result = foot.next();
+                            if (result.equalsIgnoreCase("q")) {
+                                running2 = false;
+                                running = false;
+                                System.out.println("Quitting, returning to main menu.");
+                                break;
                             }
-                            System.out.println(finalSimplePassword);
+                            numOfWords = Integer.valueOf(result);
+                            if (numOfWords <= 1 || numOfWords >= 6 ) {
+                                System.out.println("Too few or too many words. Please enter a number between 2 and 5.");
+                            } 
+                            else if (numOfWords >= 3 || numOfWords <= 7) {
+                                for (int i = 0; i < numOfWords; i++) {
+                                    wordNum = rand.nextInt(dictSize);
+                                    finalSimplePassword.append(dict.get(wordNum) + separator);
+                                }
+                                System.out.println(finalSimplePassword);
+                                finalSimplePassword = new StringBuilder();
+                            } else {
+                                System.out.println("Please enter a valid response.");
+                            }
                         }
-                    } else {
-                        System.out.println("Please enter a valid response.")
                     }
                 } else if (selection.equalsIgnoreCase("together")) {
-                    System.out.println("How many words? Lower limit is \"2\" and upper limit is \"5\"")
-                    if (foot.hasNextInt()) {
-                        numOfWords = in.nextInt();
-                        if  (numOfWords <= 2 || numOfWords >= 5 ) {
-                            System.out.println("Too few or too many words. Please enter a number between 2 and 5.")
-                        } else {
-                            for (int i = 0; i < numofWords; i++) {
-                                wordNum = rand.nextInt(dictSize);
-                                finalSimplePassword.append(dict.get(wordNum);
+                    System.out.println("How many words? Lower limit is \"2\" and upper limit is \"5\"");
+                    while (running2) {
+                        if (foot.hasNext()) {
+                            String result = foot.next();
+                            if (result.equalsIgnoreCase("q")) {
+                                running2 = false;
+                                running = false;
+                                System.out.println("Quitting, returning to main menu.");
+                                break;
                             }
-                            System.out.println(finalSimplePassword);
+                            numOfWords = Integer.valueOf(result);
+                            if (numOfWords <= 1 || numOfWords >= 6 ) {
+
+                                System.out.println("Too few or too many words. Please enter a number between 2 and 5.");
+                            } else if (numOfWords >= 3 || numOfWords <= 7) {
+                                for (int i = 0; i < numOfWords; i++) {
+                                    wordNum = rand.nextInt(dictSize);
+                                    finalSimplePassword.append(dict.get(wordNum));
+                                }
+                                System.out.println(finalSimplePassword);
+                                finalSimplePassword = new StringBuilder();
+                            } else {
+                                System.out.println("Please enter a valid response.");
+                            }
                         }
                     }
                 } else if (selection.equalsIgnoreCase("q")) {
@@ -196,10 +229,15 @@ public class Password {
                         wordNum = rand.nextInt(dictSize);
                         finalSimplePassword.append(dict.get(wordNum) + separator);
                     }
+                    System.out.println(finalSimplePassword);
+                    System.out.println("Returning to main menu");
+                    running = false;
+                    running2 = false;
                 } else {
-                    System.out.println("Please enter a valid response.")
+                    System.out.println("Please enter a valid response.");
                 }
-            }   
+
+            }
         }
     }
 
@@ -222,7 +260,7 @@ public class Password {
         /* 
          * If the file "wordlist.txt" could not be found, it will return null, or the actual array if the file can be found. Should it fail, it will let the user know, and fail. 
          */
-        
+
         /* 
          * What is try and catch?
          * 
