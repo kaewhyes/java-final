@@ -31,3 +31,5 @@ Create a password generator that can make simple (`powdery-exponent-underhand`) 
 ## A Final Statement
 
 We totally finished all of these goals. Don't question it. This will most likely be the first and final version of this password generator, unless one of us gets bored over the summer (which we will). Thank you for an amazing year, JAVA class of 2019!
+
+###### Licensed under WTFPL
